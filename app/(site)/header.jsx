@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import LoginButton from '../components/auth/LoginButton'
 
 export default function Header() {
   return (
@@ -10,6 +13,11 @@ export default function Header() {
                 </li>
                 <li>
                     <Link className="text-sm font-medium uppercase" href="/users">Users</Link>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <LoginButton />
                 </li>
             </ul>
         </nav>

@@ -1,11 +1,11 @@
-import {getUsers} from '@/lib/prisma/users'
 import Link from 'next/link'
+// import {getUsers} from '@/lib/prisma/users'
 
 export default async function Users() {
-    const {users} = await getUsers()
-    console.log("users");
-    console.log(getUsers);
-    console.log(users);
+    // const {users} = await getUsers()
+    // console.log("users");
+    // console.log(getUsers);
+    // console.log(users);
     
     return (
         <section className='fixed'>
