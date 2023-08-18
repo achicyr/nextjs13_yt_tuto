@@ -1,7 +1,7 @@
 import './globals.css'
 import Footer from './footer'
 import Header from './header'
-import Provider from './provider'
+import Provider, {DarkModeProvider} from './provider'
 
 
 export const metadata = {
@@ -25,13 +25,18 @@ const localfont = localFont({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className='h-full scroll-smooth antialiased'>
+    // <html lang='en' className='h-full scroll-smooth antialiased light' style={{colorScheme: 'light'}}>
+    <html lang='en' className='h-full scroll-smooth antialiased' suppressHydrationWarning>
       <head />
-      <body className={`${localfont.className} flex h-full flex-col`}>
+      <body className={`${localfont.className} flex h-full flex-col`} 
+        cz-shortcut-listen="true"
+      >
         <Provider>
+        {/* <DarkModeProvider> */}
           <Header />
           <main className={`${nunito.className} grow`}>{children}</main>
           <Footer />
+        {/* </DarkModeProvider> */}
         </Provider>
       </body>
     </html>
