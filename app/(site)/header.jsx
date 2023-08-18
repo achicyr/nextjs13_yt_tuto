@@ -20,6 +20,9 @@ const Header = () => {
           <li>
             <Link href='/todos'>Todos</Link>
           </li>
+          <li>
+            <Link href='/todos_actions'>Todos actions</Link>
+          </li>
         </ul>
         <ul className='ml-auto'>
           <li>
