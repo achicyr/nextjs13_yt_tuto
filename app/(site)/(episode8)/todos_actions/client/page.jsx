@@ -3,11 +3,10 @@ import { getAllTodos } from '@/lib/prisma/todos'
 import {create} from "../../_actions"
 
 
-async function action(formData, formRef){
+async function action(formData){
   "use server"
-  console.log(formRef);
   await create(formData)
-  formRef.current.reset()
+  
 }
 
 export const dynamic = 'force-dynamic'

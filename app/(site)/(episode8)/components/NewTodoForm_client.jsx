@@ -5,7 +5,11 @@ const NewTodoForm = ({action}) => {
   const formRef = useRef()
 
   return (
-    <form ref={formRef} action={e=>{console.log((e)); action(e,formRef)}}>
+    <form ref={formRef} action={async e=>{
+      console.log((e))
+      await action(e)
+      formRef.current.reset()
+    }}>
       <h2 className='font-medium mb-2'>Create a New Todo</h2>
       <input
         type='text'
