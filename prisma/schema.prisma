@@ -7,6 +7,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Guestbook {
+    id                  String  @id @default(auto()) @map("_id") @db.ObjectId
+    name                String
+    message             String
+    updatedAt           DateTime
+}
+
 model Todo {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   title             String

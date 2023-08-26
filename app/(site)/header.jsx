@@ -26,6 +26,9 @@ const Header = () => {
           <li>
             <Link href='/darkMode'>Dark Mode</Link>
           </li>
+          <li>
+            <Link href='/home'>Exercice12: ServerActions</Link>
+          </li>
         </ul>
         <ul className='ml-auto'>
           <li>
