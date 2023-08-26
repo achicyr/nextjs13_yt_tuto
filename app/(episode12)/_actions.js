@@ -1,22 +1,17 @@
 'use server'
 
-import { revalidatePath } from 'next/cache'
-// import { GuestEntrySchema } from '@/lib/schema'
-import { createGuestbookEntry } from '@/lib/prisma/guestbook'
+import {createGuestbookEntry} from "@/lib/prisma/guestbook"
+import {revalidatePath} from 'next/cache'
 
-export async function addEntry(data) {
-  const { name, message } = Object.fromEntries(data)
+export const addEntry = async (data) => {
+    const {name, message} = Object.fromEntries(data)
 
-  // if (!name || !message) throw new Error('Invalid data.')
-  // GuestEntrySchema.parse({ name, message })
-  // const { error: zodError } = GuestEntrySchema.safeParse({ name, message })
+    // if(!name || !message) throw new Error('Invalid input.')
+    if(!name || !message) return {error: "Toutes les propriétés doivent être rempli."}
 
-  // if (zodError) {
-  //   return { error: zodError.format() }
-  // }
-
-  const { error } = await createGuestbookEntry({ name, message })
-  if (error) throw new Error(error)
-
-  revalidatePath('/guestbook')
+    const { insertedId, error } = await createGuestbookEntry({ name, message })
+    if(error) throw new Error(error)
+    revalidatePath("/")
 }
+
+

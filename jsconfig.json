@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "@/12/*": ["app/(episode12)/*"],
       "@/components/*": ["app/components/*"],
       "@/12components/*": ["app/(episode12)/components/*"],
       "@/lib/*": ["lib/*"],

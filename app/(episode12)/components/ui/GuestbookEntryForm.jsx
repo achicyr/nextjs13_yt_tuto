@@ -1,14 +1,18 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useState, useTransition } from 'react'
+import {useState} from 'react'
+import {addEntry} from '@/12/_actions'
+// import { useRouter } from 'next/navigation'
+// import { useState, useTransition } from 'react'
 
 const GuestbookEntryForm = () => {
-  const router = useRouter()
-  const [isPending, startTransition] = useTransition()
-  const [isFetching, setIsFetching] = useState(false)
-  const isMutating = isFetching || isPending
-
+  const [validation, setValidation] = useState(null)
+  
+  // const router = useRouter()
+  // const [isPending, startTransition] = useTransition()
+  // const [isFetching, setIsFetching] = useState(false)
+  // const isMutating = isFetching || isPending
+/*
   const handleSubmit = async event => {
     event.preventDefault()
     const form = event.currentTarget
@@ -35,12 +39,22 @@ const GuestbookEntryForm = () => {
       router.refresh()
     })
   }
+*/
 
+  async function action(data){
+    const result = await addEntry(data)
+    if(result?.error)setValidation(result.error)
+    else setValidation(null)
+  }
+  
   return (
     <form
       className='flex max-w-sm flex-col gap-y-3 text-sm'
-      onSubmit={handleSubmit}
+      // onSubmit={handleSubmit}
+      action={action}
+      key={Math.random()}
     >
+      <p>{validation}</p>
       <input
         type='text'
         name='name'
@@ -55,7 +69,7 @@ const GuestbookEntryForm = () => {
       />
       <button
         type='submit'
-        disabled={isMutating}
+        // disabled={isMutating}
         className='rounded bg-black px-3 py-1 text-white disabled:opacity-50 dark:bg-white dark:text-black'
       >
         Add
