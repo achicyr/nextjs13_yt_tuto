@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 
 import { getAllPosts, getPostBySlug } from '@/lib/posts'
-import Pageviews from '@/app/(episode12)/components/Pageviews'
+import Pageviews from '@/12components/Pageviews'
 
 export async function generateStaticParams() {
   const posts = await getAllPosts()
